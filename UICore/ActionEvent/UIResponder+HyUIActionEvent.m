@@ -6,7 +6,7 @@
 //
 
 #import "UIResponder+HyUIActionEvent.h"
-#import "FoundationCore.h"
+#import "HyFoundationCore.h"
 #import "HyUIActionEvent.h"
 #import "HyUIActionEventResult.h"
 #import <objc/message.h>
