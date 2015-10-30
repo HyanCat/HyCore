@@ -23,12 +23,14 @@
 
 @end
 
-@interface HyEXTPageableResult : NSObject <HyEXTPageableResult>
+/**
+ * 请求对象数据结果
+ */
+@protocol HyEXTObjectDataResult <NSObject>
 
-@property (nonatomic, assign, readwrite) NSUInteger total;	// 总数
-@property (nonatomic, assign, readwrite) NSUInteger page;	// 当前页数
-@property (nonatomic, assign, readwrite) NSUInteger count;	// 请求结果数（实际数目以 list.count 为准）
-@property (nonatomic, copy, readwrite) NSArray *list;		// 数据列表
+@property (nonatomic, copy, readonly) NSData *data;		// 请求的对象数据
+@property (nonatomic, copy, readonly) NSURL *remoteUrl;	// 请求的对象远程 url
+@property (nonatomic, copy, readonly) NSURL *localUrl;	// 请求的对象本地 url
 
 @end
 
@@ -44,5 +46,26 @@ typedef void(^HyEXTResultCallback)(NSError *error);
 // 分页数据回调
 typedef void(^HyEXTPagebaleResultCallback)(id <HyEXTPageableResult> data, NSError *error);
 
+// 列表数组数据回调
 typedef void(^HyEXTListResultCallback)(NSArray *listData, NSError *error);
 
+// NSData数据回调
+typedef void(^HyEXTObjectDataResultCallback)(id <HyEXTObjectDataResult> data, NSError *error);
+
+
+@interface HyEXTPageableResult : NSObject <HyEXTPageableResult>
+
+@property (nonatomic, assign, readwrite) NSUInteger total;	// 总数
+@property (nonatomic, assign, readwrite) NSUInteger page;	// 当前页数
+@property (nonatomic, assign, readwrite) NSUInteger count;	// 请求结果数（实际数目以 list.count 为准）
+@property (nonatomic, copy, readwrite) NSArray *list;		// 数据列表
+
+@end
+
+@interface HyEXTObjectDataResult : NSObject <HyEXTObjectDataResult>
+
+@property (nonatomic, copy, readwrite) NSData *data;		// 请求的对象数据
+@property (nonatomic, copy, readwrite) NSURL *remoteUrl;	// 请求的对象远程 url
+@property (nonatomic, copy, readwrite) NSURL *localUrl;		// 请求的对象本地 url
+
+@end

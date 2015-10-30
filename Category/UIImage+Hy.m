@@ -7,6 +7,22 @@
 
 #import "UIImage+Hy.h"
 
+UIImage *HyUIImage(NSString *imageName)
+{
+	if (HyStringIsNil(imageName)) {
+		return nil;
+	}
+	return [UIImage imageNamed:imageName];
+}
+
+UIImage *HyCGImage(CGImageRef image)
+{
+	if (image == nil) {
+		return nil;
+	}
+	return [UIImage imageWithCGImage:image];
+}
+
 @implementation UIImage (Hy)
 
 + (UIImage *)imageWithSize:(CGSize)size
@@ -384,10 +400,11 @@ typedef NS_ENUM(NSUInteger, PIXELS)
 
 @end
 
-UIImage *HyUIImage(NSString *imageName)
+@implementation UIImage (HyConvert)
+
+- (NSData *)data
 {
-	if (imageName.length == 0) {
-		return nil;
-	}
-	return [UIImage imageNamed:imageName];
+	return UIImagePNGRepresentation(self);
 }
+
+@end

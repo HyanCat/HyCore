@@ -7,6 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
+UIImage *HyUIImage(NSString *imageName);
+
+UIImage *HyCGImage(CGImageRef image);
+
 @interface UIImage (Hy)
 
 + (UIImage *)imageWithSize:(CGSize)size
@@ -68,4 +72,9 @@
 
 @end
 
-UIImage *HyUIImage(NSString *imageName);
+
+@interface UIImage (HyConvert)
+
+- (NSData *)data;
+
+@end

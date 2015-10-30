@@ -11,6 +11,7 @@
 #import "HyMacros.h"
 #import "HyEXTBlock.h"
 #import "HyMath.h"
+#import "HyImageItem.h"
 
 #import "NSObject+Hy.h"
 #import "NSDictionary+Hy.h"

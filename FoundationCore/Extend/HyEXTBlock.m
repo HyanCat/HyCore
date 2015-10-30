@@ -20,3 +20,11 @@
 @synthesize list;
 
 @end
+
+@implementation HyEXTObjectDataResult
+
+@synthesize data;
+@synthesize remoteUrl;
+@synthesize localUrl;
+
+@end
