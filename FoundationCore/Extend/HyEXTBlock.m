@@ -28,3 +28,10 @@
 @synthesize localUrl;
 
 @end
+
+@implementation HyEXTImageResult
+
+@synthesize image;
+@synthesize remoteUrl;
+
+@end

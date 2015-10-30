@@ -34,6 +34,16 @@
 
 @end
 
+/**
+ * 请求对象数据结果
+ */
+@protocol HyEXTImageResult <NSObject>
+
+@property (nonatomic, copy, readonly) UIImage *image;	// 请求的图片
+@property (nonatomic, copy, readonly) NSURL *remoteUrl;	// 请求的图片远程 url
+
+@end
+
 // 无参数无返回值 Block
 typedef void(^HyEXTVoidBlock)();
 
@@ -49,8 +59,11 @@ typedef void(^HyEXTPagebaleResultCallback)(id <HyEXTPageableResult> data, NSErro
 // 列表数组数据回调
 typedef void(^HyEXTListResultCallback)(NSArray *listData, NSError *error);
 
-// NSData数据回调
+// NSData 数据回调
 typedef void(^HyEXTObjectDataResultCallback)(id <HyEXTObjectDataResult> data, NSError *error);
+
+// UIImage 数据回调
+typedef void(^HyEXTImageResultCallback)(id <HyEXTImageResult> data, NSError *error);
 
 
 @interface HyEXTPageableResult : NSObject <HyEXTPageableResult>
@@ -67,5 +80,12 @@ typedef void(^HyEXTObjectDataResultCallback)(id <HyEXTObjectDataResult> data, NS
 @property (nonatomic, copy, readwrite) NSData *data;		// 请求的对象数据
 @property (nonatomic, copy, readwrite) NSURL *remoteUrl;	// 请求的对象远程 url
 @property (nonatomic, copy, readwrite) NSURL *localUrl;		// 请求的对象本地 url
+
+@end
+
+@interface HyEXTImageResult : NSObject <HyEXTImageResult>
+
+@property (nonatomic, copy, readwrite) UIImage *image;		// 请求的图片
+@property (nonatomic, copy, readwrite) NSURL *remoteUrl;	// 请求的图片远程 url
 
 @end
