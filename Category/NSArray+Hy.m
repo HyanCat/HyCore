@@ -40,3 +40,8 @@ BOOL HyArrayIsEmpty(NSArray *array)
 {
 	return array == nil || [array isEqual:[NSNull null]] || array.count == 0;
 }
+
+BOOL HyArrayIsNotEmpty(NSArray *array)
+{
+	return !HyArrayIsEmpty(array);
+}

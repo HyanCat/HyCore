@@ -14,19 +14,6 @@
 @synthesize thumbnail;
 @synthesize imageUrl;
 
-- (BOOL)loadImage
-{
-	if (HyStringIsNil(self.imageUrl.absoluteString)) {
-		return NO;
-	}
-	
-	if ([FCFileManager isReadableItemAtPath:self.imageUrl.absoluteString]) {
-		self.image = [UIImage imageWithContentsOfFile:self.imageUrl.absoluteString];
-	}
-	
-	return !!self.image;
-}
-
 @end
 
 @implementation HyImageAssetItem
@@ -43,20 +30,22 @@
 	return self;
 }
 
+- (BOOL)loadImage
+{
+	if (HyStringIsNil(self.imageUrl.absoluteString)) {
+		return NO;
+	}
+	
+	if ([FCFileManager isReadableItemAtPath:self.imageUrl.absoluteString]) {
+		self.image = [UIImage imageWithContentsOfFile:self.imageUrl.absoluteString];
+	}
+	
+	return !!self.image;
+}
+
 @end
 
 @implementation HyImageRemoteItem
 @synthesize remoteUrl;
-@synthesize asset = _asset;
 
-- (instancetype)initWithAsset:(ALAsset *)asset
-{
-	self = [super init];
-	if (self) {
-		_asset = asset;
-		self.imageUrl = asset.defaultRepresentation.url;
-		self.thumbnail = [UIImage imageWithCGImage:asset.thumbnail];
-	}
-	return self;
-}
 @end

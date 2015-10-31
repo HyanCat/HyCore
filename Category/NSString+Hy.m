@@ -52,6 +52,11 @@ BOOL HyStringIsNotNil(NSString *string)
 	return ! HyStringIsNil(string);
 }
 
+BOOL HyStringIsEmpty(NSString *string)
+{
+	return HyStringIsNil(string) || string.length == 0;
+}
+
 NSString *HySafeString(NSString *string)
 {
 	return HyStringIsNil(string) ? @"" : string;

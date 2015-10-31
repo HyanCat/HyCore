@@ -16,3 +16,4 @@
 @end
 
 BOOL HyArrayIsEmpty(NSArray *array);
+BOOL HyArrayIsNotEmpty(NSArray *array);

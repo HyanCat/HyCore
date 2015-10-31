@@ -38,26 +38,28 @@ UIImage *HyCGImage(CGImageRef image);
 		  backgroundColors:(NSArray *)backgroundColors;
 
 /*
- 等比例缩放图片，尺寸调整为 size*size 范围
- 有单边超过 size 的，缩小为 size
- 宽高都小于 size 的，较长的一边放大至 size
- size 为 point
+ * 等比例缩放图片，尺寸调整为 size*size 范围（最长边 ≤ size）
  */
 - (UIImage *)zoomToFitSize:(CGFloat)size;
 
-// 等比缩小后,裁剪到指定大小
+/*
+ * 等比缩小后,裁剪到指定大小
+ */
 - (UIImage *)scaleAndClipToFillSize:(CGSize)destSize;
 
 /*
  * 等比例缩小
- * size 为 point
  */
 - (UIImage *)shrinkToSize:(CGFloat)size;
 /*
  * 等比例放大
- * size 为 point
  */
 - (UIImage *)magnifyToSize:(CGFloat)size;
+
+/**
+ * 压缩图片 size 并限制大小
+ */
+- (UIImage *)compressToFitSize:(CGFloat)size limitFileSize:(NSUInteger)fileSize;
 
 - (UIImage *)imageWithSize:(CGSize)size;
 - (UIImage *)imageWithSize:(CGSize)size cornerRadius:(CGFloat)cornerRadius;

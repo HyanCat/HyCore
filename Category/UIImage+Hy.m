@@ -256,6 +256,19 @@ UIImage *HyCGImage(CGImageRef image)
 	}
 }
 
+- (UIImage *)compressToFitSize:(CGFloat)size limitFileSize:(NSUInteger)fileSize
+{
+	UIImage *image = [self shrinkToSize:size];
+	CGFloat compression = 1.f, minCompression = 0.5f;
+	NSData *imageData = nil;
+	do {
+		imageData = UIImageJPEGRepresentation(image, compression);
+		compression -= 0.1f;
+	} while (imageData.length > fileSize && compression >= minCompression);
+	
+	return [UIImage imageWithData:imageData];
+}
+
 - (UIImage *)imageWithSize:(CGSize)size
 {
 	return [self imageWithSize:size cornerRadius:0];
@@ -404,7 +417,7 @@ typedef NS_ENUM(NSUInteger, PIXELS)
 
 - (NSData *)data
 {
-	return UIImagePNGRepresentation(self);
+	return UIImageJPEGRepresentation(self, 1);
 }
 
 @end

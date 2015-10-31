@@ -19,8 +19,6 @@
 @property (nonatomic, strong) UIImage *thumbnail;	// 缩略图
 @property (nonatomic, copy) NSURL *imageUrl;		// 图片的本地 url
 
-- (BOOL)loadImage;	// 加载原始图
-
 @end
 
 /**
@@ -28,20 +26,25 @@
  */
 @protocol HyImageAssetItem <HyImageItem>
 
+@property (nonatomic, strong) ALAsset *asset;	// 相册中的 asset
+
 - (instancetype)initWithAsset:(ALAsset *)asset;
 
-@property (nonatomic, strong) ALAsset *asset;	// 相册中的 asset
+- (BOOL)loadImage;	// 加载原始图
 
 @end
 
 /**
  * 远程图片元素
  */
-@protocol HyImageRemoteItem <HyImageAssetItem>
+@protocol HyImageRemoteItem <HyImageItem>
 
 @property (nonatomic, copy) NSURL *remoteUrl;	// 远程图片 url
 
 @end
+
+
+//************************ Interface ************************//
 
 
 @interface HyImageItem : NSObject <HyImageItem>
