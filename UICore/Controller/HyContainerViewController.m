@@ -221,10 +221,12 @@
 
 - (void)handleNavigationBarBackItemTouched:(id)sender
 {
+	[[self currentController] viewWillTransitionBack:YES];
 	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithTransitionTypeBackAnimated:YES]];
 }
 - (void)handleNavigationBarDismissItemTouched:(id)sender
 {
+	[[self currentController] viewWillTransitionDismiss:YES];
 	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithTransitionTypeDismissAnimated:YES]];
 }
 
@@ -337,6 +339,7 @@
 	_panPoint = nil;
 	HyBaseViewController *currentController = [self currentController];
 	if (currentController.view.x > 60.f) {
+		[currentController viewWillTransitionBack:YES];
 		[self _popControllerWithCompletion:nil];
 	}
 	else {
@@ -369,6 +372,7 @@
 	_panPoint = nil;
 	HyBaseViewController *currentController = [self currentController];
 	if (currentController.view.y > 120.f) {
+		[currentController viewWillTransitionDismiss:YES];
 		[self _dismissControllerWithCompletion:nil];
 	}
 	else {

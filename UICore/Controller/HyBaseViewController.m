@@ -281,4 +281,16 @@ const CGFloat kNavigationBarHeight = 64.f;
 	// 子类重写
 }
 
+- (void)viewWillTransitionBack:(BOOL)animated
+{
+	// nothing to do
+	// 子类重写
+}
+
+- (void)viewWillTransitionDismiss:(BOOL)animated
+{
+	// nothing to do
+	// 子类重写
+}
+
 @end
