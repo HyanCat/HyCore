@@ -11,24 +11,21 @@
 
 #pragma mark Getter
 
-- (CGFloat)x;
-- (CGFloat)y;
-- (CGFloat)width;
-- (CGFloat)height;
+@property (nonatomic, assign) CGFloat x;
+@property (nonatomic, assign) CGFloat y;
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat top;
+@property (nonatomic, assign) CGFloat bottom;
+@property (nonatomic, assign) CGFloat left;
+@property (nonatomic, assign) CGFloat right;
+
 - (CGPoint)origin;
 - (CGSize)size;
-- (CGFloat)minX;
-- (CGFloat)minY;
-- (CGFloat)maxX;
-- (CGFloat)maxY;
 - (CGPoint)innerCenter;
 
 #pragma mark Setter
 
-- (void)setX:(CGFloat)x;
-- (void)setY:(CGFloat)y;
-- (void)setWidth:(CGFloat)width;
-- (void)setHeight:(CGFloat)height;
 - (void)setOrigin:(CGPoint)origin;
 - (void)setSize:(CGSize)size;
 - (void)setOriginZero;

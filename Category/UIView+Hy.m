@@ -27,6 +27,22 @@
 {
 	return self.frame.size.height;
 }
+- (CGFloat)top
+{
+	return CGRectGetMinY(self.frame);
+}
+- (CGFloat)bottom
+{
+	return CGRectGetMaxY(self.frame);
+}
+- (CGFloat)left
+{
+	return CGRectGetMinX(self.frame);
+}
+- (CGFloat)right
+{
+	return CGRectGetMaxX(self.frame);
+}
 - (CGPoint)origin
 {
 	return self.frame.origin;
@@ -34,22 +50,6 @@
 - (CGSize)size
 {
 	return self.frame.size;
-}
-- (CGFloat)minX
-{
-	return CGRectGetMinX(self.frame);
-}
-- (CGFloat)minY
-{
-	return CGRectGetMinY(self.frame);
-}
-- (CGFloat)maxX
-{
-	return CGRectGetMaxX(self.frame);
-}
-- (CGFloat)maxY
-{
-	return CGRectGetMaxY(self.frame);
 }
 - (CGPoint)innerCenter
 {
@@ -74,6 +74,23 @@
 {
 	self.frame = CGRectMake(self.x, self.y, self.width, height);
 }
+- (void)setTop:(CGFloat)top
+{
+	self.frame = CGRectMake(self.x, top, self.width, self.height);
+}
+- (void)setBottom:(CGFloat)bottom
+{
+	self.frame = CGRectMake(self.x, bottom-self.height, self.width, self.height);
+}
+- (void)setLeft:(CGFloat)left
+{
+	self.frame = CGRectMake(left, self.y, self.width, self.height);
+}
+- (void)setRight:(CGFloat)right
+{
+	self.frame = CGRectMake(right-self.width, self.y, self.width, self.height);
+}
+
 - (void)setOrigin:(CGPoint)origin
 {
 	self.frame = CGRectMake(origin.x, origin.y, self.width, self.height);
