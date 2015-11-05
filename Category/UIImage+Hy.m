@@ -9,7 +9,7 @@
 
 UIImage *HyUIImage(NSString *imageName)
 {
-	if (HyStringIsNil(imageName)) {
+	if (HyStringIsEmpty(imageName)) {
 		return nil;
 	}
 	return [UIImage imageNamed:imageName];
