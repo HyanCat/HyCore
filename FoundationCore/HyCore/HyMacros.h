@@ -70,4 +70,6 @@ _Pragma("clang diagnostic ignored \"-Wshadow\"") \
 __strong typeof(var) var = AHKWeak_##var; \
 _Pragma("clang diagnostic pop")
 
+#define SELF [self class]
+
 #endif /* HyMacros_h */
