@@ -15,7 +15,7 @@ const CGFloat kNavigationBarHeight = 64.f;
 
 @property (nonatomic, assign) BOOL appearFirstTime;
 
-@property (nonatomic, strong, readwrite) UIView *contentView;
+@property (nonatomic, strong, readwrite) __kindof UIView *contentView;
 @property (nonatomic, strong, readwrite) CALayer *maskLayer;
 @property (nonatomic, assign, readwrite) HyViewControllerState state;
 
@@ -100,8 +100,12 @@ const CGFloat kNavigationBarHeight = 64.f;
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.contentView = [[self.contentViewClass alloc] init];
 	if ([self.contentViewClass isSubclassOfClass:[UIScrollView class]]) {
-		((UIScrollView *)self.contentView).alwaysBounceVertical = YES;
-		((UIScrollView *)self.contentView).showsHorizontalScrollIndicator = NO;
+		UIScrollView *scrollView = self.contentView;
+		scrollView.alwaysBounceVertical = YES;
+		scrollView.showsHorizontalScrollIndicator = NO;
+		CGFloat top = [self preferNavigationBarHeight];
+		[scrollView setContentInset:UIEdgeInsetsMake(top, 0, 0, 0)];
+		[scrollView setScrollIndicatorInsets:UIEdgeInsetsMake(top, 0, 0, 0)];
 	}
 	[self.view insertSubviewToFill:self.contentView atIndex:0];
 	

@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, HyViewControllerState)
 @interface HyBaseViewController : UIViewController
 
 @property (nonatomic, strong) Class contentViewClass;
-@property (nonatomic, strong, readonly) UIView *contentView;
+@property (nonatomic, strong, readonly) __kindof UIView *contentView;
 @property (nonatomic, strong, readonly) CALayer *maskLayer;
 @property (nonatomic, weak) HyContainerViewController *containerViewController;
 

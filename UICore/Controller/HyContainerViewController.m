@@ -89,21 +89,24 @@
 
 #pragma mark self.viewControllers 数组维护
 
+// 最上层的 controllers
 - (NSMutableArray <HyBaseViewController *> *)topLevelViewControllers
 {
 	return [self.viewControllers lastObject];
 }
 
+// 第二层的 controllers
 - (NSMutableArray <HyBaseViewController *> *)underTopLevelViewControllers
 {
 	return [self.viewControllers objectAtCirclePosition:-2];
 }
 
+// 最上层 当前 controller
 - (HyBaseViewController *)currentController
 {
 	return [self topLevelViewControllers].lastObject;
 }
-
+// 最上层 当前下方的 controller
 - (HyBaseViewController *)currentBelowController
 {
 	return [[self topLevelViewControllers] objectAtCirclePosition:-2];
@@ -755,7 +758,7 @@
 - (void)_didFinishedTransitionDismiss
 {
 	NSArray <HyBaseViewController *> *dismissedViewControllers = [self topLevelViewControllers];
-	HyBaseViewController *backController = [self currentBelowController];
+	HyBaseViewController *backController = [self underTopLevelViewControllers].lastObject;
 	
 	// 这里最好是逆序遍历
 	[dismissedViewControllers enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HyBaseViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
