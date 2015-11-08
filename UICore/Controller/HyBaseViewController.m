@@ -99,6 +99,7 @@ const CGFloat kNavigationBarHeight = 64.f;
 {
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.contentView = [[self.contentViewClass alloc] init];
+	self.contentView.backgroundColor = [UIColor whiteColor];
 	if ([self.contentViewClass isSubclassOfClass:[UIScrollView class]]) {
 		UIScrollView *scrollView = self.contentView;
 		scrollView.alwaysBounceVertical = YES;
@@ -128,6 +129,11 @@ const CGFloat kNavigationBarHeight = 64.f;
 - (CGFloat)preferNavigationBarHeight
 {
 	return kNavigationBarHeight;
+}
+
+- (CGFloat)preferBottomBarHeight
+{
+	return 0;
 }
 
 - (void)setNeedsNavigationBarAppearanceUpdate

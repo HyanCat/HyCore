@@ -42,6 +42,8 @@ typedef NS_ENUM(NSUInteger, HyViewControllerState)
 
 - (CGFloat)preferNavigationBarHeight;	// default 64.0f
 
+- (CGFloat)preferBottomBarHeight;		// default 0
+
 - (void)setNeedsNavigationBarAppearanceUpdate;
 
 - (void)setNavigationCenterItemWithTitle:(NSString *)title color:(UIColor *)color;
