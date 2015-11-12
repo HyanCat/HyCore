@@ -17,9 +17,9 @@
 @protocol HyEXTPageableResult <NSObject>
 
 @property (nonatomic, assign, readonly) NSUInteger total;	// 总数
-@property (nonatomic, assign, readonly) NSUInteger page;		// 当前页数
+@property (nonatomic, assign, readonly) NSUInteger page;	// 当前页数
 @property (nonatomic, assign, readonly) NSUInteger count;	// 请求结果数（实际数目以 list.count 为准）
-@property (nonatomic, copy, readonly) NSArray *list;			// 数据列表
+@property (nonatomic, copy, readonly) NSArray *list;		// 数据列表
 
 @end
 
