@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define STRING_SEL(x) NSStringFromSelector(@selector(x))
+#define STRING_CLASS(x) NSStringFromClass([x class]);
+
 @interface NSString (Hy)
 
 - (NSString *)repeat;
@@ -15,6 +18,11 @@
 
 + (NSString *)bundleFileContent:(NSString *)fileName;
 + (NSString *)bundleFileContent:(NSString *)fileName failure:(HyEXTResultCallback)failure;
+
+// 字符串驼峰转下划线
+- (NSString *)toUnderScoreCaseString;
+// 字符串下划线转驼峰
+- (NSString *)toCamelCaseString;
 
 @end
 

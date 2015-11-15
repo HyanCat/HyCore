@@ -77,6 +77,40 @@
 	}
 }
 
++ (BOOL)hasProperty:(NSString *)propertyName
+{
+	objc_property_t property = class_getProperty([self class], propertyName.UTF8String);
+	
+	return property != NULL;
+}
+
+- (void)enumeratePropertiesUsingBlock:(void (^)(NSString *))block
+{
+	unsigned int count = 0;
+	objc_property_t *properties = class_copyPropertyList([self class], &count);
+	for (unsigned int i = 0; i < count; i++) {
+		objc_property_t pro = properties[i];
+		NSString *propertyName = [NSString stringWithUTF8String:property_getName(pro)];
+		block(propertyName);
+	}
+}
+
++ (Class)classForProperty:(NSString *)propertyName
+{
+	objc_property_t property = class_getProperty([self class], propertyName.UTF8String);
+	
+	NSString* propertyAttributes = [NSString stringWithUTF8String:property_getAttributes(property)];
+	NSArray* splitPropertyAttributes = [propertyAttributes componentsSeparatedByString:@"\""];
+	NSString *className = nil;
+	if (splitPropertyAttributes.count >= 2) {
+		className = [splitPropertyAttributes objectAtIndex:1];
+	}
+	else {
+		// ..
+	}
+	return NSClassFromString(className);
+}
+
 @end
 
 #pragma mark - HyObjectSingleton

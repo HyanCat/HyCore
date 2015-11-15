@@ -40,6 +40,46 @@
 	return content;
 }
 
+- (NSString *)toUnderScoreCaseString
+{
+	if (self.length == 0) return self;
+
+	NSMutableString *underScoreCaseString = [NSMutableString string];
+
+	for (NSUInteger i = 0; i < self.length; i++) {
+		
+		NSString *scanString = [self substringWithRange:NSMakeRange(i, 1)];
+		NSString *scanStringLower = [scanString lowercaseString];
+		
+		if ([scanString isEqualToString:scanStringLower]) {
+			[underScoreCaseString appendString:scanString];
+		}
+		else {
+			[underScoreCaseString appendString:@"_"];
+			[underScoreCaseString appendString:scanStringLower];
+		}
+	}
+	return underScoreCaseString;
+}
+
+- (NSString *)toCamelCaseString
+{
+	if (self.length == 0) return self;
+	
+	NSArray <NSString *> *components = [self componentsSeparatedByString:@"_"];
+
+	__block NSMutableString *camelCaseString = @"".mutableCopy;
+	[components enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		if (idx > 0 && obj.length > 0) {
+			[camelCaseString appendString:[obj capitalizedString]];
+		}
+		else {
+			[camelCaseString appendString:obj];
+		}
+	}];
+	return camelCaseString.copy;
+}
+
 @end
 
 BOOL HyStringIsNil(NSString *string)

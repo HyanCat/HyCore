@@ -19,6 +19,21 @@
 
 - (void)performSelectorOnMainThread:(SEL)selector withObject:(id)object;
 
+/**
+ * 判断类是否含有某个属性
+ */
++ (BOOL)hasProperty:(NSString *)propertyName;
+
+/**
+ * 遍历属性
+ */
+- (void)enumeratePropertiesUsingBlock:(void (^) (NSString *propertyName))block;
+
+/**
+ * 类的成员属性的类名
+ */
++ (Class)classForProperty:(NSString *)propertyName;
+
 @end
 
 
