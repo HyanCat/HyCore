@@ -10,6 +10,7 @@
 @interface HyUIButton : UIButton
 
 @property (nonatomic, copy) NSString *eventName;
+@property (nonatomic, copy) NSDictionary *eventUserInfo;
 
 @property (nonatomic, strong) UIColor *highlightBackgroundColor;
 

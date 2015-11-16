@@ -47,7 +47,7 @@
 
 - (void)buttonTouched:(id)sender
 {
-	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithName:self.eventName object:self]];
+	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithName:self.eventName object:self userInfo:self.eventUserInfo]];
 }
 
 - (void)_updateButtonResource
