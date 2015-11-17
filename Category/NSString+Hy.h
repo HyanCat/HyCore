@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #define STRING_SEL(x) NSStringFromSelector(@selector(x))
-#define STRING_CLASS(x) NSStringFromClass([x class]);
+#define STRING_CLASS(x) NSStringFromClass([x class])
 
 @interface NSString (Hy)
 

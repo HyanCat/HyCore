@@ -21,5 +21,6 @@
 #import "HyUIPanPoint.h"
 #import "UIGestureRecognizer+Hy.h"
 #import "HyUIButton.h"
+#import "HyModalViewController.h"
 
 #endif /* HyUICore_h */
