@@ -7,10 +7,6 @@
 
 #import "HyEXTBlock.h"
 
-@implementation HyEXTBlock
-
-@end
-
 
 @implementation HyEXTPageableResult
 

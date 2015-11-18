@@ -7,10 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HyEXTBlock : NSObject
-
-@end
-
 /**
  * 分页结果
  */
