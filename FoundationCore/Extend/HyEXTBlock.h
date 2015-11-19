@@ -61,6 +61,9 @@ typedef void(^HyEXTObjectDataResultCallback)(id <HyEXTObjectDataResult> data, NS
 // UIImage 数据回调
 typedef void(^HyEXTImageResultCallback)(id <HyEXTImageResult> data, NSError *error);
 
+// 进度数据回调
+typedef void(^HyEXTDataProgressCallback)(NSUInteger currentLength, NSUInteger expectedLength);
+
 
 @interface HyEXTPageableResult : NSObject <HyEXTPageableResult>
 
