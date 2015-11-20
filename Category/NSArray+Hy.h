@@ -7,13 +7,22 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+BOOL HyArrayIsEmpty(NSArray * _Nullable array);
+BOOL HyArrayIsNotEmpty(NSArray * _Nullable array);
+
 @interface NSArray (Hy)
 
-- (id)objectAtPosition:(NSUInteger)position;
+- (nullable id)objectAtPosition:(NSUInteger)position;
 
-- (id)objectAtCirclePosition:(NSInteger)position;
+- (nullable id)objectAtCirclePosition:(NSInteger)position;
 
 @end
 
-BOOL HyArrayIsEmpty(NSArray *array);
-BOOL HyArrayIsNotEmpty(NSArray *array);
+@interface NSMutableArray (Hy)
+
+- (void)replaceAllObjectsTo:(NSArray *)objects;
+
+@end
+NS_ASSUME_NONNULL_END

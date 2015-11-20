@@ -7,6 +7,16 @@
 
 #import "NSArray+Hy.h"
 
+BOOL HyArrayIsEmpty(NSArray *array)
+{
+	return array == nil || [array isEqual:[NSNull null]] || array.count == 0;
+}
+
+BOOL HyArrayIsNotEmpty(NSArray *array)
+{
+	return !HyArrayIsEmpty(array);
+}
+
 @implementation NSArray (Hy)
 
 - (id)objectAtPosition:(NSUInteger)position
@@ -35,13 +45,14 @@
 
 @end
 
+@implementation NSMutableArray (Hy)
 
-BOOL HyArrayIsEmpty(NSArray *array)
+- (void)replaceAllObjectsTo:(NSArray *)objects
 {
-	return array == nil || [array isEqual:[NSNull null]] || array.count == 0;
+	[self removeAllObjects];
+	if (HyArrayIsNotEmpty(objects)) {
+		[self addObjectsFromArray:objects];
+	}
 }
 
-BOOL HyArrayIsNotEmpty(NSArray *array)
-{
-	return !HyArrayIsEmpty(array);
-}
+@end
