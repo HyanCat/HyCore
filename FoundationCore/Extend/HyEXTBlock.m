@@ -17,6 +17,14 @@
 
 @end
 
+@implementation HyEXTListResult
+
+@synthesize expectedCount;
+@synthesize count;
+@synthesize list;
+
+@end
+
 @implementation HyEXTObjectDataResult
 
 @synthesize data;

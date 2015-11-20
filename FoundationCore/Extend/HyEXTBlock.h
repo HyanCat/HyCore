@@ -20,6 +20,17 @@
 @end
 
 /**
+ * 列表数据结果
+ */
+@protocol HyEXTListResult <NSObject>
+
+@property (nonatomic, assign, readonly) NSUInteger expectedCount;	// 期望数量
+@property (nonatomic, assign, readonly) NSUInteger count;			// 实际结果数
+@property (nonatomic, copy, readonly) NSArray *list;				// 结果数组
+
+@end
+
+/**
  * 请求对象数据结果
  */
 @protocol HyEXTObjectDataResult <NSObject>
@@ -50,16 +61,19 @@ typedef void(^HyEXTDataResultCallback)(id data, NSError *error);
 typedef void(^HyEXTResultCallback)(NSError *error);
 
 // 分页数据回调
-typedef void(^HyEXTPagebaleResultCallback)(id <HyEXTPageableResult> data, NSError *error);
+typedef void(^HyEXTPagebaleResultCallback)(id <HyEXTPageableResult> pageableResult, NSError *error);
 
-// 列表数组数据回调
-typedef void(^HyEXTListResultCallback)(NSArray *listData, NSError *error);
+// 列表数据回调
+typedef void(^HyEXTListResultCallback)(id <HyEXTListResult> listResult, NSError *error);
+
+// 数组数据回调
+typedef void(^HyEXTArrayResultCallback)(NSArray *result, NSError *error);
 
 // NSData 数据回调
-typedef void(^HyEXTObjectDataResultCallback)(id <HyEXTObjectDataResult> data, NSError *error);
+typedef void(^HyEXTObjectDataResultCallback)(id <HyEXTObjectDataResult> objectResult, NSError *error);
 
 // UIImage 数据回调
-typedef void(^HyEXTImageResultCallback)(id <HyEXTImageResult> data, NSError *error);
+typedef void(^HyEXTImageResultCallback)(id <HyEXTImageResult> imageResult, NSError *error);
 
 // 进度数据回调
 typedef void(^HyEXTDataProgressCallback)(NSUInteger currentLength, NSUInteger expectedLength);
@@ -71,6 +85,14 @@ typedef void(^HyEXTDataProgressCallback)(NSUInteger currentLength, NSUInteger ex
 @property (nonatomic, assign, readwrite) NSUInteger page;	// 当前页数
 @property (nonatomic, assign, readwrite) NSUInteger count;	// 请求结果数（实际数目以 list.count 为准）
 @property (nonatomic, copy, readwrite) NSArray *list;		// 数据列表
+
+@end
+
+@interface HyEXTListResult : NSObject <HyEXTListResult>
+
+@property (nonatomic, assign, readwrite) NSUInteger expectedCount;	// 期望数量
+@property (nonatomic, assign, readwrite) NSUInteger count;			// 实际结果数
+@property (nonatomic, copy, readwrite) NSArray *list;				// 结果数组
 
 @end
 
