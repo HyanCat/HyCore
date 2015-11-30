@@ -29,4 +29,5 @@
 BOOL HyStringIsNil(NSString *string);
 BOOL HyStringIsNotNil(NSString *string);
 BOOL HyStringIsEmpty(NSString *string);
+BOOL HyStringIsNotEmpty(NSString *string);
 NSString *HySafeString(NSString *string);

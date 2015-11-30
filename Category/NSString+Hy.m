@@ -97,6 +97,11 @@ BOOL HyStringIsEmpty(NSString *string)
 	return HyStringIsNil(string) || string.length == 0;
 }
 
+BOOL HyStringIsNotEmpty(NSString *string)
+{
+	return !HyStringIsEmpty(string);
+}
+
 NSString *HySafeString(NSString *string)
 {
 	return HyStringIsNil(string) ? @"" : string;
