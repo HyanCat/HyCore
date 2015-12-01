@@ -89,4 +89,9 @@ typedef NS_ENUM(NSUInteger, HyViewControllerState)
 - (void)viewWillTransitionBack:(BOOL)animated;		// 转场视图将要返回
 - (void)viewWillTransitionDismiss:(BOOL)animated;	// 转场视图将要消失
 
+#pragma mark - Notification
+
+- (void)keyboardWillShow:(NSNotification *)notification;
+- (void)keyboardWillHide:(NSNotification *)notification;
+
 @end

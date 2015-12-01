@@ -32,6 +32,9 @@ const CGFloat kNavigationBarHeight = 64.f;
 - (void)dealloc
 {
 	NSLog(@"%@ dealloc.", [self class]);
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 #endif
@@ -50,7 +53,7 @@ const CGFloat kNavigationBarHeight = 64.f;
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-//	DDLogDebug(@"%@ view will appear.", [self class]);
+
 	self.state = HyViewControllerStateWillAppear;
 	if (self.appearFirstTime) {
 		[self viewWillAppearFirstTime:animated];
@@ -60,7 +63,7 @@ const CGFloat kNavigationBarHeight = 64.f;
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-//	DDLogDebug(@"%@ view did appear.", [self class]);
+
 	self.state = HyViewControllerStateDidAppear;
 	if (self.appearFirstTime) {
 		[self viewDidAppearFirstTime:animated];
@@ -71,14 +74,14 @@ const CGFloat kNavigationBarHeight = 64.f;
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-//	DDLogDebug(@"%@ view will disappear.", [self class]);
+
 	self.state = HyViewControllerStateWillDisappear;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-//	DDLogDebug(@"%@ view did disappear.", [self class]);
+
 	self.state = HyViewControllerStateDidDisappear;
 }
 
@@ -90,6 +93,9 @@ const CGFloat kNavigationBarHeight = 64.f;
 	[self loadData];
 	
 	[self setNeedsNavigationBarAppearanceUpdate];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 
@@ -298,6 +304,20 @@ const CGFloat kNavigationBarHeight = 64.f;
 }
 
 - (void)viewWillTransitionDismiss:(BOOL)animated
+{
+	// nothing to do
+	// 子类重写
+}
+
+#pragma mark - Notification
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+	// nothing to do
+	// 子类重写
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
 {
 	// nothing to do
 	// 子类重写
