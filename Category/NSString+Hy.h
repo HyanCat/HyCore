@@ -19,6 +19,8 @@
 + (NSString *)bundleFileContent:(NSString *)fileName;
 + (NSString *)bundleFileContent:(NSString *)fileName failure:(HyEXTResultCallback)failure;
 
++ (NSString *)stringSizeSemanticly:(NSUInteger)size;
+
 // 字符串驼峰转下划线
 - (NSString *)toUnderScoreCaseString;
 // 字符串下划线转驼峰

@@ -40,6 +40,28 @@
 	return content;
 }
 
++ (NSString *)stringSizeSemanticly:(NSUInteger)size
+{
+	NSString *unit = @"B";
+	float floatSize = (float)size;
+	if (floatSize > 1024) {
+		unit = @"KB";
+		floatSize /= 1024;
+		if (floatSize > 1024) {
+			unit = @"MB";
+			floatSize /= 1024;
+			if (floatSize > 1024) {
+				unit = @"GB";
+				floatSize /= 1024;
+			}
+		}
+	}
+	else {
+		floatSize = 0;
+	}
+	return [NSString stringWithFormat:@"%1.1f %@", floatSize, unit];
+}
+
 - (NSString *)toUnderScoreCaseString
 {
 	if (self.length == 0) return self;
