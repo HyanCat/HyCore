@@ -60,7 +60,7 @@ void hexStringColorToRGBA(NSString *hexString, NSUInteger *red, NSUInteger *gree
 
 UIColor *HyColorWithHexString(NSString *hexString)
 {
-	NSUInteger red, green, blue, alpha;
+	NSUInteger red = 0, green = 0, blue = 0, alpha = 0;
 	hexStringColorToRGBA(hexString, &red, &green, &blue, &alpha);
 	
 	return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:alpha/255.f];

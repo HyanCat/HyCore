@@ -59,7 +59,7 @@
 	else {
 		self.confirmButton.enabled = YES;
 		self.previewButton.enabled = YES;
-		[self.confirmButton setTitle:[NSString stringWithFormat:@"确定(%ld)", _count] forState:UIControlStateNormal];
+		[self.confirmButton setTitle:[NSString stringWithFormat:@"确定(%ld)", (unsigned long)_count] forState:UIControlStateNormal];
 	}
 	[self _updateWith];
 }

@@ -98,7 +98,7 @@ static NSString *const kHyAlbumViewCellIdentifier = @"hyAlbumViewCellIdentifier"
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.imageView.image = [self imageAtIndexPath:indexPath];
 	cell.textLabel.text = [[self.albums objectAtIndex:indexPath.row] valueForProperty:ALAssetsGroupPropertyName];
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", [self.albums objectAtIndex:indexPath.row].numberOfAssets];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.albums objectAtIndex:indexPath.row].numberOfAssets];
 	return cell;
 }
 
