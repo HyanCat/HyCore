@@ -12,6 +12,9 @@
 // 判断系统版本号
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 
+#define HY_DEVICE_NAME									[[UIDevice currentDevice] model]
+#define HY_SYSTEM_NAME									[[UIDevice currentDevice] systemName]
+#define HY_SYSTEM_VERSION								[[UIDevice currentDevice] systemVersion]
 #define HY_SYSTEM_VERSION_EQUAL_TO(v)					([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define HY_SYSTEM_VERSION_GREATER_THAN(v)				([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define HY_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)	([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
