@@ -86,8 +86,8 @@ typedef NS_ENUM(NSUInteger, HyViewControllerState)
 - (void)viewWillAppearFirstTime:(BOOL)animated;		// 视图将要第一次显示
 - (void)viewDidAppearFirstTime:(BOOL)animated;		// 视图已经第一次显示
 
-- (void)viewWillTransitionBack:(BOOL)animated;		// 转场视图将要返回
-- (void)viewWillTransitionDismiss:(BOOL)animated;	// 转场视图将要消失
+- (BOOL)viewWillTransitionBack:(BOOL)animated;		// 转场视图将要返回, return YES 则返回，NO 则不返回
+- (BOOL)viewWillTransitionDismiss:(BOOL)animated;	// 转场视图将要消失, return YES 则消失，NO 则不消失
 
 #pragma mark - Notification
 

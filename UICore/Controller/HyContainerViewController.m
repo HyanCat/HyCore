@@ -224,13 +224,15 @@
 
 - (void)handleNavigationBarBackItemTouched:(id)sender
 {
-	[[self currentController] viewWillTransitionBack:YES];
-	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithTransitionTypeBackAnimated:YES]];
+	if ([[self currentController] viewWillTransitionBack:YES]) {
+		[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithTransitionTypeBackAnimated:YES]];
+	}
 }
 - (void)handleNavigationBarDismissItemTouched:(id)sender
 {
-	[[self currentController] viewWillTransitionDismiss:YES];
-	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithTransitionTypeDismissAnimated:YES]];
+	if ([[self currentController] viewWillTransitionDismiss:YES]) {
+		[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithTransitionTypeDismissAnimated:YES]];
+	}
 }
 
 // 手势处理

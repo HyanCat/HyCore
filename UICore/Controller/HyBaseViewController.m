@@ -297,15 +297,15 @@ const CGFloat kNavigationBarHeight = 64.f;
 	// 子类重写
 }
 
-- (void)viewWillTransitionBack:(BOOL)animated
+- (BOOL)viewWillTransitionBack:(BOOL)animated
 {
-	// nothing to do
+	return YES;
 	// 子类重写
 }
 
-- (void)viewWillTransitionDismiss:(BOOL)animated
+- (BOOL)viewWillTransitionDismiss:(BOOL)animated
 {
-	// nothing to do
+	return YES;
 	// 子类重写
 }
 
