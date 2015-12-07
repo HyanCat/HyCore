@@ -7,6 +7,16 @@
 
 #import "NSDictionary+Hy.h"
 
+BOOL HyDictionaryIsEmpty(NSDictionary *dictionary)
+{
+	return dictionary == nil || [dictionary isEqual:[NSNull null]] || dictionary.count == 0;
+}
+
+BOOL HyDictionaryIsNotEmpty(NSDictionary *dictionary)
+{
+	return !HyDictionaryIsEmpty(dictionary);
+}
+
 @implementation NSDictionary (Hy)
 
 - (BOOL)isKVOValueChanged
@@ -43,6 +53,17 @@
 	}
 	
 	return ![newValue isEqual:oldValue];
+}
+
+- (instancetype)filterKeys:(NSArray<NSString *> *)keys
+{
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+	[self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+		if ([keys containsObject:key]) {
+			[dictionary setObject:obj forKey:key];
+		}
+	}];
+	return dictionary.copy;
 }
 
 @end

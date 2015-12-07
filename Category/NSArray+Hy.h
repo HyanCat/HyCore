@@ -18,6 +18,11 @@ BOOL HyArrayIsNotEmpty(NSArray * _Nullable array);
 
 - (nullable id)objectAtCirclePosition:(NSInteger)position;
 
+- (nullable id)secondObject;
+- (nullable id)thirdObject;
+- (nullable id)lastButSecondObject;
+- (nullable id)lastButThirdObject;
+
 @end
 
 @interface NSMutableArray (Hy)
@@ -25,4 +30,5 @@ BOOL HyArrayIsNotEmpty(NSArray * _Nullable array);
 - (void)replaceAllObjectsTo:(NSArray *)objects;
 
 @end
+
 NS_ASSUME_NONNULL_END

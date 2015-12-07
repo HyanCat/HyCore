@@ -43,6 +43,32 @@ BOOL HyArrayIsNotEmpty(NSArray *array)
 	return [self objectAtPosition:position];
 }
 
+- (id)secondObject
+{
+	return [self objectAtPosition:1];
+}
+
+- (id)thirdObject
+{
+	return [self objectAtPosition:2];
+}
+
+- (id)lastButSecondObject
+{
+	if (self.count < 2) {
+		return nil;
+	}
+	return [self objectAtIndex:self.count - 2];
+}
+
+- (id)lastButThirdObject
+{
+	if (self.count < 3) {
+		return nil;
+	}
+	return [self objectAtIndex:self.count - 3];
+}
+
 @end
 
 @implementation NSMutableArray (Hy)

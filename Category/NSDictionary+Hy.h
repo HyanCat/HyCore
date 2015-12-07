@@ -7,8 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+BOOL HyDictionaryIsEmpty(NSDictionary *dictionary);
+BOOL HyDictionaryIsNotEmpty(NSDictionary *dictionary);
+
 @interface NSDictionary (Hy)
 
 - (BOOL)isKVOValueChanged;
+
+- (instancetype)filterKeys:(NSArray <NSString *> *)keys;
 
 @end
