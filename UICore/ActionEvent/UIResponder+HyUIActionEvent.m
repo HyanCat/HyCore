@@ -49,9 +49,8 @@ const char *dispatchUIEventQueueName = "HyUIActionEventDispatchQueue";
 	NSString * actionSelectorName = [NSString stringWithFormat:@"handle%@WithActionEvent:", name];
 	SEL selector = NSSelectorFromString(actionSelectorName);
 	if ([self respondsToSelector:selector]) {
-		HyUIActionEventResult * result = nil;
 		HyUIActionEventResult * (*action)(id, SEL, HyUIActionEvent *) = (HyUIActionEventResult *(*)(id, SEL, HyUIActionEvent *)) objc_msgSend;
-		action(self, selector, actionEvent);
+		HyUIActionEventResult * result = action(self, selector, actionEvent);
 		if (result == nil || ![result isKindOfClass:[HyUIActionEventResult class]] || result.shouldContinueDispatching == NO) {
 			// 结束 event
 			return ;
