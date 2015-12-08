@@ -11,4 +11,6 @@
 
 + (NSDate *)dateFromSqlTimestamp:(NSString *)timestamp;
 
+- (NSString *)semanticDate;
+
 @end
