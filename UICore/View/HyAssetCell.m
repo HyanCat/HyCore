@@ -60,7 +60,7 @@
 							 
 						 }];
 	}
-	self.checkImageView.image = _checked ? HyUIImage(@"image_select_checked") : HyUIImage(@"image_select_unchecked");
+	self.checkImageView.image = _checked ? HyUIImage(@"icon_select_checked") : HyUIImage(@"icon_select_unchecked");
 }
 
 - (BOOL)isChecked
