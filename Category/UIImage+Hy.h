@@ -70,7 +70,7 @@ UIImage *HyCGImage(CGImageRef image);
  * 灰度图
  */
 - (UIImage *) grayImage;
-- (UIImage *) blurImage;
+- (UIImage *) whiteMaskImage;
 
 @end
 

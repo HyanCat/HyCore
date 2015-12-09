@@ -401,7 +401,7 @@ typedef NS_ENUM(NSUInteger, PIXELS)
 	return resultUIImage;
 }
 
-- (UIImage *)blurImage
+- (UIImage *)whiteMaskImage
 {
 	CGSize size = [self size];
 	UIGraphicsBeginImageContextWithOptions(size, NO, 0);
