@@ -32,10 +32,10 @@
 	NSDateComponents *componentsOfNow = [calendar components:NSCalendarUnitYear | NSCalendarUnitDay fromDate:now];
 	
 	if (difference.minute == 0 && difference.second < 60) {
-		return [NSString stringWithFormat:@"%ld 秒前", difference.second];
+		return [NSString stringWithFormat:@"%ld 秒前", (long)difference.second];
 	}
 	else if (difference.minute < 60) {
-		return [NSString stringWithFormat:@"%ld 分钟前", difference.minute];
+		return [NSString stringWithFormat:@"%ld 分钟前", (long)difference.minute];
 	}
 	else if (componentsOfSelf.year == componentsOfNow.year && componentsOfSelf.day == componentsOfNow.day) {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
