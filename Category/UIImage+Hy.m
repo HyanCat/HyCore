@@ -209,33 +209,14 @@ UIImage *HyCGImage(CGImageRef image)
 	CGFloat heightScale = destSize.height/originHeight;
 	CGFloat scale = fmaxf(widthScale, heightScale);
 	
-//	scaleWidth = ceilf(scaleHeight / self.size.height * self.size.width);
-//	if (scaleWidth < destSize.width) {
-//		scaleWidth = destSize.width;
-//		scaleHeight = ceilf(scaleWidth / self.size.width * self.size.height);
-//	}
-	
-	//scale
-	UIGraphicsBeginImageContextWithOptions(destSize, NO, 0.f);
-	[self drawInRect:CGRectMake((originWidth*scale - destSize.width)/2, (originHeight*scale - destSize.height)/2, originWidth*scale, originHeight*scale)];
+	UIGraphicsBeginImageContextWithOptions(destSize, NO, 0);
+	[self drawInRect:CGRectMake(ceilf(destSize.width - originWidth*scale)/2,
+								ceilf(destSize.height - originHeight*scale)/2,
+								ceilf(originWidth*scale),
+								ceilf(originHeight*scale))];
 	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return newImage;
-	//clip
-//	CGFloat originX = ceilf((scaleWidth - originWidth) / 2);
-//	CGFloat originY = ceilf((scaleHeight - originHeight) / 2);
-//	
-//	
-//	CGRect cropRect = CGRectMake(ceilf(originX * scaledImage.scale),
-//								 ceilf(originY * scaledImage.scale),
-//								 ceilf(originWidth * scaledImage.scale),
-//								 ceilf(originHeight * scaledImage.scale));
-//	
-//	CGImageRef imageRef = CGImageCreateWithImageInRect([scaledImage CGImage], cropRect);
-//	UIImage *cropImage = [UIImage imageWithCGImage:imageRef];
-//	CGImageRelease(imageRef);
-//	
-//	return cropImage;
 }
 
 - (UIImage *)shrinkToSize:(CGFloat)size
