@@ -31,6 +31,11 @@
 #define IOS8_OR_BEFORE HY_SYSTEM_VERSION_LESS_THAN(@"9")
 #define IOS9_OR_BEFORE HY_SYSTEM_VERSION_LESS_THAN(@"10")
 
+#define IOS6 (IOS6_OR_LATER && IOS6_OR_BEFORE)
+#define IOS7 (IOS7_OR_LATER && IOS7_OR_BEFORE)
+#define IOS8 (IOS8_OR_LATER && IOS8_OR_BEFORE)
+#define IOS9 (IOS9_OR_LATER && IOS9_OR_BEFORE)
+
 #define IPhone5Width	(HyScreenScale == 320.f)
 #define IPhone6Width	(HyScreenScale == 375.f)
 #define IPhone6PWidth	(HyScreenScale == 621.f)
