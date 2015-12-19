@@ -132,6 +132,13 @@ const CGFloat kNavigationBarHeight = 64.f;
 	return NO;
 }
 
+- (void)viewWillLayoutSubviews
+{
+	self.contentView.y = 0;	// Adapt for status bar's height change while in call.
+
+	[super viewWillLayoutSubviews];
+}
+
 - (CGFloat)preferNavigationBarHeight
 {
 	return kNavigationBarHeight;
