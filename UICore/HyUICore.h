@@ -17,7 +17,6 @@
 #import "UINib+Hy.h"
 
 #import "HyNavigationBar.h"
-#import "HyUIActionCore.h"
 #import "HyUIPanPoint.h"
 #import "UIGestureRecognizer+Hy.h"
 #import "HyUIButton.h"
